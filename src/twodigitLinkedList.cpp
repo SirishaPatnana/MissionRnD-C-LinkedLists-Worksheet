@@ -14,13 +14,18 @@ NOTES: Only Postive Numbers
 
 #include <stdio.h>
 #include <malloc.h>
-
+#include<math.h>
 struct node {
 	int digit1;
 	int digit2;
 	struct node *next;
 };
-
 int convert_sll_2digit_to_int(struct node *head){
-	return 0;
+	int num=0;
+	while (head!= NULL)
+	{
+		num = num * 100 + ((head->digit1) * 10 + head->digit2);
+		head = head->next;
+	}
+	return num;
 }

@@ -17,8 +17,25 @@ NOTES: For negative numbers ignore negative sign.
 struct node {
 	int num;
 	struct node *next;
-};
-
+}*head,*ptr;
 struct node * numberToLinkedList(int N) {
-	return NULL;
+	head = NULL;
+	if (N < 0)
+		N = N*(-1);
+	if (head == NULL)
+	{
+		head = (struct node *)malloc(1 * sizeof(struct node));
+		head->next = NULL;
+		head->num = N % 10;
+		N = N / 10;
+	}
+	while (N>0)
+	{
+		ptr = (struct node *)malloc(1 * sizeof(struct node));
+		ptr->next = head;
+		ptr->num = N%10;
+		head = ptr;
+		N = N / 10;
+	}
+	return head;
 }
